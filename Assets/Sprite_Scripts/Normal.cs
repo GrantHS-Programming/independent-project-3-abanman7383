@@ -19,5 +19,6 @@ public class Normal : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.SendMessage("ApplyDamage", damage);
+        Destroy(gameObject);
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Triangle : MonoBehaviour
 {
-    public int health;
+    public int health = 100;
     public float speed;
     public Transform target;
-    
+    private int currentHealth;
     void Update()
     {
         Vector3 direction = target.position - transform.position;
@@ -18,14 +18,16 @@ public class Triangle : MonoBehaviour
         float y = (float)Math.Sin( transform.rotation.eulerAngles.z * Mathf.Deg2Rad)*Time.deltaTime * speed;
         transform.position += new Vector3(x,y,0);
         
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     void ApplyDamage(int damage)
     {
         health -= damage;
+        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
