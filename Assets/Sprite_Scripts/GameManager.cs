@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public int level;
     public GameObject triangle;
-    public bool fighting;
+    public static bool fighting;
     public GameObject player;
     public GameObject bullet;
     
@@ -20,20 +20,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         bullet = GameObject.FindGameObjectWithTag("Bullet");
         fighting = false;
-
-        if (player != null)
-        {
-            Debug.Log("player found");
-        }
-        if (bullet != null)
-        {
-            Debug.Log("bullet found");
-        }
-
-        if (triangle != null)
-        {
-            Debug.Log("triangle found");
-        }
     }
 
     void Update()
@@ -48,15 +34,6 @@ public class GameManager : MonoBehaviour
                         Mathf.Sin(randomangle * Mathf.Deg2Rad) * 20, 0), Quaternion.identity);
             }
             fighting = true;
-        }
-
-        if (gameObject.CompareTag("Enemy"))
-        {
-            fighting = true;
-        }
-        else
-        {
-            fighting = false;
         }
     }
 }

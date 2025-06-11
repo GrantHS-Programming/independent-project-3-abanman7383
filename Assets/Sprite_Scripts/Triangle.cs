@@ -9,6 +9,12 @@ public class Triangle : MonoBehaviour
     public float speed;
     public Transform target;
     private int currentHealth;
+
+    private void Awake()
+    {
+        GameManager.fighting = true;
+    }
+
     void Update()
     {
         Vector3 direction = target.position - transform.position;
@@ -17,12 +23,12 @@ public class Triangle : MonoBehaviour
         float x = (float)Math.Cos( transform.rotation.eulerAngles.z * Mathf.Deg2Rad)*Time.deltaTime * speed;
         float y = (float)Math.Sin( transform.rotation.eulerAngles.z * Mathf.Deg2Rad)*Time.deltaTime * speed;
         transform.position += new Vector3(x,y,0);
-        
-        
     }
+    
 
     void ApplyDamage(int damage)
     {
+        Debug.Log("Applying damage");
         health -= damage;
         
         if (health <= 0)
